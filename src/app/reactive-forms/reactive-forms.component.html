@@ -1,1 +1,68 @@
-<p>reactive-forms works!</p>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input type="text" name="name" id="name" [formControlName]="'fname'" />
+    <p
+      *ngIf="
+        !signupForm.get('fname')?.valid && signupForm.get('fname')?.touched
+      "
+    >
+      Please Enter Name
+    </p>
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input type="text" name="lname" id="lname" [formControlName]="'lname'" />
+    <p
+      *ngIf="
+        !signupForm.get('lname')?.valid && signupForm.get('fname')?.touched
+      "
+    >
+      Please Enter Last Name
+    </p>
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="text" name="age" id="age" [formControlName]="'age'" />
+    <p
+      *ngIf="!signupForm.get('age')?.valid && signupForm.get('fname')?.touched"
+    >
+      Your Age should be atleast 18
+    </p>
+  </div>
+
+  <div class="form-group" formGroupName="personalinfo">
+    <label for="address">Address</label>
+    <textarea
+      name="address"
+      id="address"
+      [formControlName]="'address'"
+    ></textarea>
+    <p
+      *ngIf="
+        !signupForm.get('personalinfo.address')?.valid &&
+        signupForm.get('personalinfo.address')?.touched
+      "
+    >
+      Your Address must be of 5 characters
+    </p>
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" id="phone" [formControlName]="'phone'" />
+    <p
+      *ngIf="
+        !signupForm.get('personalinfo.phone')?.valid &&
+        signupForm.get('personalinfo.phone')?.touched
+      "
+    >
+      Invalid Phone
+    </p>
+  </div>
+  <div class="hobbies" formArrayName="hobbies">
+    <h1>Hobbies</h1>
+    <input type="button" value="Add Hobby" (click)="addHobby()" />
+    <div *ngFor="let hobby of hobbies.controls; let i = index">
+      <input type="text" [formControlName]="i" />
+    </div>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
