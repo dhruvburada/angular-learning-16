@@ -56,6 +56,17 @@
     >
       Invalid Phone
     </p>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" [formControlName]="'email'" />
+    <p
+      *ngIf="
+        !signupForm.get('personalinfo.email')?.valid &&
+        signupForm.get('personalinfo.email')?.touched
+      "
+    >
+      Invalid Email
+    </p>
   </div>
   <div class="hobbies" formArrayName="hobbies">
     <h1>Hobbies</h1>
