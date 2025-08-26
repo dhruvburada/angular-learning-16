@@ -1,0 +1,7 @@
+.ng-submitted .ng-untouched.ng-pristine.ng-invalid {
+    border: solid 1px red;
+}
+
+input.ng-invalid.ng-touched {
+    border: solid 1px red;
+}

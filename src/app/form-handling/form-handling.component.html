@@ -1,0 +1,38 @@
+<h1>Form Handling</h1>
+<form (ngSubmit)="onSubmit(formref)" #formref="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      ngModel
+      required
+      [(ngModel)]="name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="text" name="age" id="age" ngModel required [(ngModel)]="age" />
+  </div>
+  <div class="form-group">
+    <label for="mail">Email</label>
+    <input
+      type="text"
+      name="mail"
+      id="mail"
+      email
+      required
+      [(ngModel)]="email"
+    />
+  </div>
+  <div class="form-group" ngModelGroup="locationInfo">
+    <label for="country">Country</label>
+    <input type="text" name="country" id="country" required ngModel />
+    <label for="state">State</label>
+    <input type="text" name="state" id="state" required ngModel />
+  </div>
+  <input type="submit" value="Submit" [disabled]="!formref.valid" />
+  <input type="button" value="Default" (click)="loadDefaults()" />
+  <div *ngIf="formref.submitted">{{ name }},{{ email }},{{ age }}</div>
+</form>

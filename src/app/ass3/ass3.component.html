@@ -1,0 +1,14 @@
+<button (click)="handleClick()">
+  {{ isVisible === true ? "Hide" : "Display" }} Details
+</button>
+<p *ngIf="isVisible">This is my paragraph content</p>
+
+<h3>Logs</h3>
+<ul>
+  <li
+    *ngFor="let log of logs; let i = index"
+    [ngClass]="{ highLight: i + 1 > 5 }"
+  >
+    {{ i + 1 }} {{ log }}
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+<app-input [name]="name" (inputchange)="greetUser($event)" />
+
+<h1
+  *ngIf="containsName"
+  [ngStyle]="{ 'background-color': getColor() }"
+  [ngClass]="{ 'white-text': isDhruv }"
+>
+  Hello {{ name }} How are you ??
+</h1>
