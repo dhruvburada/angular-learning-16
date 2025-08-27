@@ -13,6 +13,10 @@ import { ObservablesComponent } from './observables/observables.component';
 import { FormHandlingComponent } from './form-handling/form-handling.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { Ass5Component } from './ass5/ass5.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { TitleCasePipe } from './pipes/title-case.pipe';
+import { CutdataPipe } from './pipes/cutdata.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,11 @@ import { Ass5Component } from './ass5/ass5.component';
     ObservablesComponent,
     FormHandlingComponent,
     ReactiveFormsComponent,
-    Ass5Component
+    Ass5Component,
+    PipesComponent,
+    TitleCasePipe,
+    CutdataPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

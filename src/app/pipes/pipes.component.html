@@ -1,0 +1,22 @@
+<h1>Pipe Demo</h1>
+
+<p>{{ name | uppercase }}</p>
+<p>Date {{ date | date }}</p>
+<p>Date {{ date | date : "fullDate" }}</p>
+<p>Rs {{ 2 | currency : "INR" }}</p>
+<p>Percentage {{ 0.02 | percent }}</p>
+<p>{{ "some data here " | titleCase }}</p>
+<p>
+  {{
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo porro incidunt animi tempora ipsa aspernatur odio corporis ab mollitia quod consequuntur,pariatur et doloribus inventore tenetur? Voluptate voluptas nihil atque? Loremipsum dolor sit amet consectetur adipisicing elit. Aliquid aliquam ve corrupti nostrum deserunt sapiente iusto molestias nobis repellat recusandaemaxime officiis, animi, fugit in deleniti asperiores reprehenderit.Consectetur, tempora."
+      | cutdata : 4
+  }}
+</p>
+<h3>Search Your Friends With Pipe</h3>
+<input type="text" name="searchdata" id="searchdata" [(ngModel)]="searchTerm" />
+<hr />
+<div class="container">
+  <ul>
+    <li *ngFor="let item of friends | search : searchTerm">{{ item }}</li>
+  </ul>
+</div>
