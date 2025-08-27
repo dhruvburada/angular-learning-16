@@ -1,7 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
+import { Ass5Component } from './ass5/ass5.component';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   count = 0;

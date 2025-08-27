@@ -1,0 +1,58 @@
+<h1>Form Handling Assignment</h1>
+<form [formGroup]="projectForm">
+  <div class="form-group">
+    <label for="projName">Project Name</label>
+    <input
+      type="text"
+      name="projName"
+      id="projName"
+      formControlName="projName"
+    />
+    <div
+      class="error"
+      *ngIf="
+        projectForm.get('projName')?.touched &&
+        projectForm.get('projName')?.hasError('required')
+      "
+    >
+      Project Name should not be empty
+    </div>
+    <div
+      class="error"
+      *ngIf="projectForm.get('projName')?.hasError('wrongName')"
+    >
+      Project Name can Not be Test
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="mail">Email</label>
+    <input type="text" name="mail" id="mail" formControlName="mail" />
+    <div
+      class="error"
+      *ngIf="
+        projectForm.get('mail')?.touched &&
+        projectForm.get('mail')?.hasError('required')
+      "
+    >
+      Email should not be empty
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="status">Project Status</label>
+    <select name="status" id="status" formControlName="status">
+      <option value="stable">Stable</option>
+      <option value="critical">Critical</option>
+      <option value="finished">Finished</option>
+    </select>
+    <div
+      class="error"
+      *ngIf="
+        projectForm.get('status')?.touched &&
+        projectForm.get('status')?.hasError('required')
+      "
+    >
+      Please Select a Project Status
+    </div>
+  </div>
+  <input type="submit" (click)="onSubmit()" />
+</form>

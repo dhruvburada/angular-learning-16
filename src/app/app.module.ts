@@ -12,6 +12,7 @@ import { OddComponent } from './ass4/odd/odd.component';
 import { ObservablesComponent } from './observables/observables.component';
 import { FormHandlingComponent } from './form-handling/form-handling.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { Ass5Component } from './ass5/ass5.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     OddComponent,
     ObservablesComponent,
     FormHandlingComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    Ass5Component
   ],
   imports: [
     BrowserModule,
