@@ -62,11 +62,18 @@
     <p
       *ngIf="
         !signupForm.get('personalinfo.email')?.valid &&
-        signupForm.get('personalinfo.email')?.touched
+        signupForm.get('personalinfo.email')?.touched &&
+        !signupForm.get('personalinfo.email')?.hasError('forbiddenEmail')
       "
     >
       Invalid Email
     </p>
+
+    <div
+      *ngIf="signupForm.get('personalinfo.email')?.hasError('forbiddenEmail')"
+    >
+      This email is forbidden.
+    </div>
   </div>
   <div class="hobbies" formArrayName="hobbies">
     <h1>Hobbies</h1>

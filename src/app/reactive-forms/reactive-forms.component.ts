@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,7 +16,7 @@ export class ReactiveFormsComponent implements OnInit {
         {
           address: new FormControl('', [Validators.minLength(5), Validators.required]),
           phone: new FormControl('', [Validators.minLength(10), Validators.required]),
-          email: new FormControl('', [Validators.required], [this.isValidEmail]),
+          email: new FormControl('', [Validators.required], [this.isValidEmail.bind(this)]),
         }
       ),
       fname: new FormControl('', Validators.required),
@@ -44,15 +44,29 @@ export class ReactiveFormsComponent implements OnInit {
     return this.signupForm.get('hobbies') as FormArray;
   }
 
-  isValidEmail(formControl: FormControl): Promise<any> | Observable<any> {
-    return new Promise((res, rej) => {
+  // isValidEmail(formControl: AbortController): Promise<any> | Observable<any> {
+  //   return new Promise((res, rej) => {
+  //     setTimeout(() => {
+  //       if (formControl.value === "dburada367@rku.ac.in") {
+  //         rej({ forbiddenEmail: true });
+  //       }
+  //       res(null)
+  //     }, 1000)
+  //   })
+  // }
+
+  isValidEmail(formControl: AbstractControl): Promise<ValidationErrors | null> {
+    console.log("Form Control", formControl)
+    return new Promise((resolve) => {
       setTimeout(() => {
-        if (formControl.value === "dburada367@rku.ac.in") {
-          rej({ forbiddenEmail: true });
+        if (formControl.value === 'dburada367@rku.ac.in') {
+          resolve({ forbiddenEmail: true });
+        } else {
+          resolve(null);
         }
-        res(null)
-      }, 1000)
-    })
+      }, 1000);
+    });
   }
+
 }
 
