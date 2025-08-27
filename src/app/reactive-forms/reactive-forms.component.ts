@@ -16,7 +16,7 @@ export class ReactiveFormsComponent implements OnInit {
         {
           address: new FormControl('', [Validators.minLength(5), Validators.required]),
           phone: new FormControl('', [Validators.minLength(10), Validators.required]),
-          email: new FormControl('', [Validators.required], [this.isValidEmail.bind(this)]),
+          email: new FormControl('', [Validators.required, Validators.email], [this.isValidEmail.bind(this)]),
         }
       ),
       fname: new FormControl('', Validators.required),
@@ -44,6 +44,10 @@ export class ReactiveFormsComponent implements OnInit {
     return this.signupForm.get('hobbies') as FormArray;
   }
 
+  removeHobby(index: number) {
+    (this.signupForm.get('hobbies') as FormArray).removeAt(index)
+  }
+
   // isValidEmail(formControl: AbortController): Promise<any> | Observable<any> {
   //   return new Promise((res, rej) => {
   //     setTimeout(() => {
@@ -68,5 +72,9 @@ export class ReactiveFormsComponent implements OnInit {
     });
   }
 
+  resetForm() {
+    this.signupForm.reset()
+    console.log(this.signupForm)
+  }
 }
 

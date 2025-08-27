@@ -80,7 +80,9 @@
     <input type="button" value="Add Hobby" (click)="addHobby()" />
     <div *ngFor="let hobby of hobbies.controls; let i = index">
       <input type="text" [formControlName]="i" />
+      <input type="button" value="X" (click)="removeHobby(i)" />
     </div>
   </div>
   <input type="submit" value="Submit" />
+  <input type="button" value="reset" (click)="resetForm()" />
 </form>
