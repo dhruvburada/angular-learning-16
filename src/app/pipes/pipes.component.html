@@ -20,7 +20,9 @@
 <hr />
 <div class="container">
   <ul>
-    <li *ngFor="let item of friends | search : searchTerm">{{ item }}</li>
+    <li *ngFor="let item of friends | search : searchTerm | sort : 'asc'">
+      {{ item }}
+    </li>
   </ul>
   <div [formGroup]="friendsGroup">
     <div formArrayName="friendsArray" [formGroup]="friendsGroup">

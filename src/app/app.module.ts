@@ -17,6 +17,10 @@ import { PipesComponent } from './pipes/pipes.component';
 import { TitleCasePipe } from './pipes/title-case.pipe';
 import { CutdataPipe } from './pipes/cutdata.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+import { HttpComponent } from './http/http.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,12 +37,15 @@ import { SearchPipe } from './pipes/search.pipe';
     PipesComponent,
     TitleCasePipe,
     CutdataPipe,
-    SearchPipe
+    SearchPipe,
+    SortPipe,
+    HttpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

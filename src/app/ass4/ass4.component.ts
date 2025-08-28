@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class Ass4Component {
 
   count: number = 0;
-  interval!: number;
+  interval!: ReturnType<typeof setInterval>;;
   @Output() numberChange = new EventEmitter<number>();
   onStart() {
     this.interval = setInterval(() => {
