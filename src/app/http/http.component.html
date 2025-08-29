@@ -11,4 +11,13 @@
     <input type="email" name="mail" id="mail" [formControlName]="'email'" />
   </div>
   <button (click)="submitForm()">Submit</button>
+  <button (click)="clearData()">Clear Data</button>
+  <div>
+    <h1>User Data</h1>
+    <ul *ngFor="let data of userData">
+      <li>{{ data["name"] }}</li>
+      <li>{{ data["email"] }}</li>
+      <li><button (click)="deleteUser(data['id'])">Delete</button></li>
+    </ul>
+  </div>
 </form>
