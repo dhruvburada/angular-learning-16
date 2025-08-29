@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, OperatorFunction } from 'rxjs';
-import { map } from 'rxjs/operators'; // ✅ Correct
+import { Observable, OperatorFunction, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators'; // ✅ Correct
 
 
 @Injectable({
@@ -16,14 +16,17 @@ export class HttpService {
   // }
 
   sendData(data: any): Observable<any> {
-    return this.httpClient.post(this.baseUrl + ".json", data)
+    return this.httpClient.post(this.baseUrl + ".json", data).pipe(catchError((error) => {
+      console.log("Error in HTTP call ", error.message);
+      return throwError(() => new Error(error.message))
+    }))
 
   }
 
 
   getData(): Observable<any[]> {
     return this.httpClient.get<{ [key: string]: { name: string, email: string } }>(
-      this.baseUrl + ".json"
+      this.baseUrl + ".json", { headers: new HttpHeaders({ "Custom-data": "hello there this is custom header" }) }
     ).pipe(
       map(data => {
         let postsArray: { id: string, name: string, email: string }[] = [];
@@ -36,8 +39,14 @@ export class HttpService {
           }
         }
         return postsArray;
+      }),
+      catchError((error) => {
+        console.log("Error Occured in HTTP Request", error.message);
+        return throwError(() => new Error(error.message))
       })
+
     );
+
   }
 
   clearData() {
